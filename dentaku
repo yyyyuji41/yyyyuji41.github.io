@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input id="int1"type="text"nemu=""value="">
+    <input id="int2"type="text"nemu=""value="">
+    <button tonclick="keisan()"nemu="button">計算する</button>
+    <script type="text/javascript">
+    function keisan(){
+
+        var element1=document.getElementById('int1');
+        var element2=document.getElementById('int2');
+
+
+        var result = parseInt(element1.value) + parseInt(element2.value);
+
+        alert(result);
+      }
+    </script>
+  </body>
+</html>
