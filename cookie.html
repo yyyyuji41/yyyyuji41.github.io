@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      img(width:100%;)
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      count=0;
+      function cookie_hage() {
+        span=document.getElementById('cookie_count')
+        count++
+        span.textContent=count;
+      }
+      function hage() {
+        setInterval(baca,1000);
+      }
+      function baca(num) {
+          count+=1;
+          span=document.getElementById('cookie_count')
+          span.textContent=count;
+      }
+    </script>
+    <p><span id = "cookie_count"></span>回/1000回で爆発</p>
+    <img onclick="cookie_hage()"src="download.jpg" alt="">
+    <ul>
+      <li onclick="hage()">10ｋｍ</li>
+      <li>50ｋｍ</li>
+      <li>100ｋｍ</li>
+    </ul>
+  </body>
+</html>
