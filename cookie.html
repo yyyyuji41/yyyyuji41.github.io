@@ -9,27 +9,55 @@
   </head>
   <body>
     <script type="text/javascript">
-      count=0;
+
+      count=999;
+      hage_count=0;
+      gomikuso_count=0;
+      kuzu_count=0;
+
+      setInterval(sreen_update,10);
+      function sreen_update() {
+        span=document.getElementById('cookie_count')
+        span.textContent=count;
+      }
+
       function cookie_hage() {
         span=document.getElementById('cookie_count')
         count++
         span.textContent=count;
       }
       function hage() {
-        setInterval(baca,1000);
+        if(count>=10){
+          count-=10;
+          hage_count++;
+        setInterval(baca,10000,1);
+        }
       }
+      function gomikuso() {
+          if(count>=50){
+            count-=50;
+            gomikuso_count++;
+          setInterval(baca,1000,1);
+      }
+    }
+    function kuzu() {
+      if(count>=100){
+        count-=100;
+        kuzu_count++;
+      setInterval(baca,10,1);
+      }
+    }
       function baca(num) {
-          count+=1;
-          span=document.getElementById('cookie_count')
-          span.textContent=count;
+          count+=num;
+
       }
     </script>
     <p><span id = "cookie_count"></span>回/1000回で爆発</p>
     <img onclick="cookie_hage()"src="download.jpg" alt="">
     <ul>
       <li onclick="hage()">10ｋｍ</li>
-      <li>50ｋｍ</li>
-      <li>100ｋｍ</li>
+      <li onclick="gomikuso()">50ｋｍ</li>
+      <li onclick="kuzu()">100ｋｍ</li>
     </ul>
   </body>
 </html>
