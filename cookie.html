@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
-      img(width:100%;)
+    body{ margin: 0;height: 100}
+      img{width:400px;}
+
+      .container{display: flex;height: 100vh}
+      .item1{flex-grow:1;
+                background-image: url(doraemon.jpg);}
+      .item2{flex-grow:1;
+                background-image: url(sensei.jpg);}
+      .item3{flex-grow:1;
+                background-image: url(mama.jpg);}
     </style>
   </head>
   <body>
     <script type="text/javascript">
 
-      count=999;
       hage_count=0;
       gomikuso_count=0;
       kuzu_count=0;
+
+      let ls_count=localStorage.getItem("ls_count")
+      if(ls_count){
+        count=parseInt(ls_count);
+
+      }else{
+        count=0;
+      }
+
+      setInterval(gomi,100);
+      function gomi() {
+        localStorage.setItem("ls_count",count)
+      }
 
       setInterval(sreen_update,10);
       function sreen_update() {
@@ -22,29 +47,35 @@
       }
 
       function cookie_hage() {
-        span=document.getElementById('cookie_count')
-        count++
-        span.textContent=count;
+        var cookie_bba=document.getElementById('cookie_bba');
+        cookie_bba.classList.remove('animate__animated','animate__bounce');
+        void cookie_bba.offsetWidth
+        cookie_bba.classList.add('animate__animated','animate__bounce');
+                count++;
+
       }
+
       function hage() {
         if(count>=10){
           count-=10;
           hage_count++;
-        setInterval(baca,10000,1);
+        setInterval(baca,1000,1);
         }
       }
+
       function gomikuso() {
           if(count>=50){
             count-=50;
             gomikuso_count++;
-          setInterval(baca,1000,1);
+          setInterval(baca,100,1);
       }
     }
-    function kuzu() {
-      if(count>=100){
-        count-=100;
-        kuzu_count++;
-      setInterval(baca,10,1);
+
+      function kuzu() {
+          if(count>=100){
+              count-=100;
+              kuzu_count++;
+            setInterval(baca,0.10,1);
       }
     }
       function baca(num) {
@@ -52,12 +83,24 @@
 
       }
     </script>
-    <p><span id = "cookie_count"></span>回/1000回で爆発</p>
-    <img onclick="cookie_hage()"src="download.jpg" alt="">
-    <ul>
-      <li onclick="hage()">10ｋｍ</li>
-      <li onclick="gomikuso()">50ｋｍ</li>
-      <li onclick="kuzu()">100ｋｍ</li>
-    </ul>
+    <div class="container">
+      <div class="item1">
+        <p class="animate__animated animate__bounce">
+          　　<span id = "cookie_count"></span>　点
+      </p>
+          <img id="cookie_bba" onclick="cookie_hage()"src="livej.webp" alt="">
+      </div>
+      <div class="item2">
+          お、お、音の呼吸だ
+      </div>
+      <div class="item3">
+        <ul>
+          <li onclick="hage()">10ｋｍ</li>
+          <li onclick="gomikuso()">50ｋｍ</li>
+          <li onclick="kuzu()">100ｋｍ</li>
+        </ul>
+      </div>
+    </div>
+
   </body>
 </html>
